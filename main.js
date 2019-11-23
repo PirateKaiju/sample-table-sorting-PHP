@@ -9,15 +9,20 @@
 let sampledata = []; 
 
 function fetchUsersTable(){
-    fetch("get_table.php").then((response) => {
+
+    
+    return fetch("get_table.php").then((response) => {
         //sampledata = JSON.parse(response);
-        response.json().then((data) => {
+        //response.json().then((data) => {
             //This is also a promise and will process the response data
-            sampledata = data;
+           // sampledata = data;
             //console.log(sampledata);
-        });
-        
+        //});
+        return response.json();
+
     });
+
+    
 }
 
 function eraseTable(){
@@ -95,9 +100,13 @@ window.onload = function(){
         drawTable(smp);
     }
 
-    //this.fetchUsersTable();
+    this.fetchUsersTable().then((result) => {
+        //console.log(result);
+        sampledata = result;
+        drawTable(result);
+    });
     //this.drawTable(sampledata);
-    let promise = new this.Promise((resolve, reject) =>{
+    /*let promise = new this.Promise((resolve, reject) =>{
         
         fetchUsersTable();
         
@@ -113,6 +122,5 @@ window.onload = function(){
     
         drawTable(sampledata);
     
-    });
-
+    });*/
 }
