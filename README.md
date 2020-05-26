@@ -1,1 +1,1 @@
-Ever tought what datatables do for you?
+Ever thought what datatables do for you?
